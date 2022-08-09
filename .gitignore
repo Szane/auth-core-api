@@ -1,0 +1,17 @@
+# intellij idea file
+*.iml
+*.idea
+*.DS_Store
+
+# eclipse file
+*.classpath
+*.project
+.settings/
+.metadata/
+
+# maven folder
+target/
+
+# emacs back files
+*~
+^\#*\#$
