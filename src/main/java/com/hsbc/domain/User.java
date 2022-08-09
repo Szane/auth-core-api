@@ -2,6 +2,7 @@ package com.hsbc.domain;
 
 import com.hsbc.base.Bean;
 import com.hsbc.util.AESUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -42,6 +43,9 @@ public class User implements Serializable {
     }
 
     public static boolean createUser(String name, String password) {
+        if (StringUtils.isBlank(name) || StringUtils.isBlank(password)) {
+            return false;
+        }
         User user = Bean.userDao.selectUser(name);
         if (null != user) {
             return false;
@@ -50,12 +54,22 @@ public class User implements Serializable {
     }
 
     public static boolean deleteUser(String name) {
+        if (StringUtils.isBlank(name)) {
+            return false;
+        }
+        User user = Bean.userDao.selectUser(name);
+        if (null != user) {
+            return false;
+        }
         return Bean.userDao.deleteUser(name);
     }
 
-    public static String authenticate() {
-        return null;
+    public static boolean invalidate(String token) {
+        return Bean.tokenDao.deleteToken(token);
     }
 
+    public static String authenticate(String userName, String password) {
+        return Bean.tokenDao.createToken(userName, password);
+    }
 
 }

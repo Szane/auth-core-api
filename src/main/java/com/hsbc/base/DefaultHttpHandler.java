@@ -11,11 +11,13 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 public class DefaultHttpHandler implements HttpHandler {
+    final static ObjectMapper objectMapper = new ObjectMapper();
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         InetSocketAddress inetSocketAddress = httpExchange.getRemoteAddress();
@@ -41,16 +43,17 @@ public class DefaultHttpHandler implements HttpHandler {
             //请求报文
             InputStream inputStream = httpExchange.getRequestBody();
             ByteArrayOutputStream bas = new ByteArrayOutputStream();
+            Headers headers = httpExchange.getResponseHeaders();
+            headers.set("Content-Type", "application/json; charset=utf-8");
             int i;
             while ((i = inputStream.read()) != -1) {
                 bas.write(i);
             }
             String requestmsg = bas.toString();
-            HandlerMapping.getApiResult(url.toString(), requestmsg);
+            Result result = HandlerMapping.getApiResult(url.toString(), requestmsg);
             System.out.println("request param:" + requestmsg);
-
             //返回报文
-            String resmsg = "";
+            String resmsg = objectMapper.writeValueAsString(result);
             httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, resmsg.getBytes(StandardCharsets.UTF_8).length);
             OutputStream outputStream = httpExchange.getResponseBody();
             outputStream.write(resmsg.getBytes(StandardCharsets.UTF_8));

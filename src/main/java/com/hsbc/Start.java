@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 
 public class Start {
     private static final int PORT = 8099;
-    private static final String CONTEXT = "/auth";
+    private static final String CONTEXT = "/api";
     private static final int MAX_THREADS = 8;
 
     public static void main(String[] args) {
