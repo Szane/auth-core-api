@@ -46,6 +46,7 @@ public class DefaultHttpHandler implements HttpHandler {
                 bas.write(i);
             }
             String requestmsg = bas.toString();
+            HandlerMapping.getApiResult(url.toString(), requestmsg);
             System.out.println("request param:" + requestmsg);
 
             //返回报文

@@ -1,6 +1,8 @@
 package com.hsbc.domain;
 
-public class Token {
+import java.io.Serializable;
+
+public class Token implements Serializable {
     private String secret;
 
     public boolean invalidate() {

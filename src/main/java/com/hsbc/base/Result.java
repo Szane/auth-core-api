@@ -10,4 +10,6 @@ public class Result<T> {
         this.msg = msg;
         this.data = data;
     }
+
+
 }

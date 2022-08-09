@@ -41,7 +41,7 @@ public class User implements Serializable {
         this.roles = new HashSet<>();
     }
 
-    public boolean createUser(String name, String password) {
+    public static boolean createUser(String name, String password) {
         User user = Bean.userDao.selectUser(name);
         if (null != user) {
             return false;
@@ -49,11 +49,11 @@ public class User implements Serializable {
         return Bean.userDao.createUser(name, password);
     }
 
-    public boolean deleteUser(String name) {
+    public static boolean deleteUser(String name) {
         return Bean.userDao.deleteUser(name);
     }
 
-    public String authenticate() {
+    public static String authenticate() {
         return null;
     }
 
