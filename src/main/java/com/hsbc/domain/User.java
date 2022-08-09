@@ -57,10 +57,6 @@ public class User implements Serializable {
         if (StringUtils.isBlank(name)) {
             return false;
         }
-        User user = Bean.userDao.selectUser(name);
-        if (null != user) {
-            return false;
-        }
         return Bean.userDao.deleteUser(name);
     }
 

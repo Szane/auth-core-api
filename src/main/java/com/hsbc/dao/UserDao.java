@@ -9,7 +9,7 @@ public interface UserDao {
     /**
      * mock database by a static map
      */
-    Map<String, User> USER_MAP = new ConcurrentHashMap<String, User>();
+    Map<String, User> USER_MAP = new ConcurrentHashMap<>();
 
     /**
      * create a new user

@@ -15,10 +15,12 @@ public class TokenDaoImpl implements TokenDao {
         if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
             return null;
         }
-        String inputPwd = AESUtils.AESDecode(password);
         User user = Bean.userDao.selectUser(userName);
+        if (user == null) {
+            return null;
+        }
         String storePwd = AESUtils.AESDecode(user.getPassword());
-        if (Objects.equals(inputPwd, storePwd)) {
+        if (Objects.equals(password, storePwd)) {
             String token = AESUtils.AESEncode(userName + storePwd + System.currentTimeMillis());
             TOKEN_MAP.put(token, userName);
             return token;

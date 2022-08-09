@@ -18,8 +18,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean deleteUser(String name) {
         try {
-            USER_MAP.remove(name);
-            return true;
+           return null!= USER_MAP.remove(name);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,7 +5,6 @@ import com.hsbc.dao.TokenDao;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -42,10 +41,6 @@ public class Role implements Serializable {
 
     public static boolean deleteRole(String name) {
         if (StringUtils.isBlank(name)) {
-            return false;
-        }
-        Role role = Bean.roleDao.selectRole(name);
-        if (null != role) {
             return false;
         }
         return Bean.roleDao.deleteRole(name);
@@ -91,6 +86,5 @@ public class Role implements Serializable {
         User user = Bean.userDao.selectUser(userName);
         return user.getRoles();
     }
-
 
 }

@@ -147,7 +147,7 @@ public class AuthApi {
     public Result<Set<Role>> allRoles(String paramJson) {
         try {
             Map<String, String> param = objectMapper.readValue(paramJson, Map.class);
-            Set<Role> r = Role.allRoles(param.get("name"));
+            Set<Role> r = Role.allRoles(param.get("token"));
             if (null != r) {
                 return successResult(r);
             }
