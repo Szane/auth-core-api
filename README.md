@@ -1,6 +1,4 @@
-[TOC]
-
-# README
+# AUTH-CORE-API
 A simple authentication and authorization HTTP server.
 
 APIs provided:
