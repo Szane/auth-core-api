@@ -43,7 +43,7 @@ curl -XPOST http://localhost:8099/api/auth/createUser -d '{
 ## API
 ### Create User
 request
-```aidl
+```
 POST /api/auth/createUser
 {
     "name": "user1",
@@ -52,14 +52,14 @@ POST /api/auth/createUser
 ```
 
 response
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -69,7 +69,7 @@ response
 
 ### Delete User
 request
-```aidl
+```
 POST /api/auth/deleteUser 
 {
     "userName": "user1"
@@ -77,14 +77,14 @@ POST /api/auth/deleteUser
 ```
 
 response
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -93,20 +93,20 @@ response
 ```
 
 ### Create Role
-```aidl
+```
 POST /api/auth/createRole 
 {
     "name": "manager"
 }
 ```
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -116,7 +116,7 @@ POST /api/auth/createRole
 
 ### Delete Role
 request
-```aidl
+```
 POST /api/auth/deleteRole 
 {
     "roleName": "role1"
@@ -124,14 +124,14 @@ POST /api/auth/deleteRole
 ```
 
 response
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -141,7 +141,7 @@ response
 
 ### Add Role to User
 request
-```aidl
+```
 POST /api/auth/addRoleToUser 
 {
     "userName": "user1",
@@ -150,14 +150,14 @@ POST /api/auth/addRoleToUser
 ```
 
 response
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -168,7 +168,7 @@ response
 
 ### Authenticate
 request
-```aidl
+```
 POST /api/auth/authenticate
 {
     "name": "user1",
@@ -176,14 +176,14 @@ POST /api/auth/authenticate
 }
 ```
 response
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": "PNCaGtmVrcq1vhpSH4kdTKOPpiXBupw76cuSLCwQK7c="
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -193,21 +193,21 @@ response
 
 ### invalidate
 request
-```aidl
+```
 POST /api/auth/invalidate
 {
     "token": "ATokenFromAuthenticate"
 }
 ```
 response
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "data": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -216,7 +216,7 @@ response
 ```
 
 ### Check Role
-```aidl
+```
 POST /api/auth/checkRole
 {
     "token": "ATokenFromAuthenticate",
@@ -224,14 +224,14 @@ POST /api/auth/checkRole
 }
 ```
 response sample
-```aidl
+```
 {
     "code": 0,
     "message": "success",
     "date": true
 }
 ```
-```aidl
+```
 {
     "code": -1,
     "message": "request failed",
@@ -240,14 +240,14 @@ response sample
 ```
 
 ### All Roles
-```aidl
+```
 POST /api/auth/allRoles
 {
     "token": "ATokenFromAuthenticate"
 }
 ```
 response
-```aidl
+```
 {
     "code": 0,
     "msg": "success",
