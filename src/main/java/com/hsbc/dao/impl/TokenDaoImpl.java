@@ -5,6 +5,7 @@ import com.hsbc.base.Bean;
 import com.hsbc.dao.TokenDao;
 import com.hsbc.domain.User;
 import com.hsbc.util.AESUtils;
+import com.hsbc.util.ExpiryMap;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.InputStream;
@@ -15,29 +16,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 public class TokenDaoImpl implements TokenDao {
-    private long tokenExpire;
-
-    public long getTokenExpire() {
-        return tokenExpire;
-    }
-
-    public void setTokenExpire(long tokenExpire) {
-        this.tokenExpire = tokenExpire;
-    }
-
-    {
-        Properties props = new Properties();
-        InputStream in = Start.class.getResourceAsStream("/config.properties");
-        InputStreamReader inputStreamReader = null;
-        try {
-            inputStreamReader = new InputStreamReader(in, StandardCharsets.UTF_8);
-            props.load(inputStreamReader);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String expireTime = props.getProperty("token_expire", "7200");
-        this.tokenExpire = Long.parseLong(expireTime);
-    }
+    public static ExpiryMap<String, String> TOKEN_MAP;
 
     @Override
     public String createToken(String userName, String password) {

@@ -2,6 +2,8 @@ package com.hsbc.domain;
 
 import com.hsbc.base.Bean;
 import com.hsbc.dao.TokenDao;
+import com.hsbc.dao.impl.TokenDaoImpl;
+import com.hsbc.util.AESUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -62,10 +64,10 @@ public class Role implements Serializable {
         if (StringUtils.isBlank(token) || StringUtils.isBlank(roleName)) {
             return false;
         }
-        if (!TokenDao.TOKEN_MAP.containsKey(token)) {
+        if (!TokenDaoImpl.TOKEN_MAP.containsKey(token)) {
             return false;
         }
-        String userName = TokenDao.TOKEN_MAP.get(token);
+        String userName = TokenDaoImpl.TOKEN_MAP.get(token);
         User user = Bean.userDao.selectUser(userName);
         for (Role role : user.getRoles()) {
             if (role.getName().equals(roleName)) {
@@ -79,10 +81,10 @@ public class Role implements Serializable {
         if (StringUtils.isBlank(token)) {
             return null;
         }
-        if (!TokenDao.TOKEN_MAP.containsKey(token)) {
+        if (!TokenDaoImpl.TOKEN_MAP.containsKey(token)) {
             return null;
         }
-        String userName = TokenDao.TOKEN_MAP.get(token);
+        String userName = TokenDaoImpl.TOKEN_MAP.get(token);
         User user = Bean.userDao.selectUser(userName);
         return user.getRoles();
     }

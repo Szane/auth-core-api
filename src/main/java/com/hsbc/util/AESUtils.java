@@ -51,19 +51,6 @@ public class AESUtils {
         }
         return null;
     }
-
-
-    /**
-     * AES加密
-     */
-    public static byte[] aesEncryptToBytes(String content, String encryptKey) throws Exception {
-        KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(128, new SecureRandom(encryptKey.getBytes()));
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
-        return cipher.doFinal(content.getBytes("utf-8"));
-    }
-
     /**
      * 解密
      */
