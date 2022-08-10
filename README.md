@@ -25,7 +25,7 @@ The security performance of the service needs to be strengthened.Some of my idea
    3. HTTPS service can be provided for secure transmission; 
    4. Prohibit users from using weak passwords,etc.
 
-## Run
+## Usage
 ```
 mvn clean package -U
 ```
@@ -33,9 +33,7 @@ mvn clean package -U
  java -jar .\target\auth-core-api-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
-
-## Test
-By sending Http request.
+Test it by sending Http request.
 
 ```aidl
 curl -XPOST http://localhost:8099/api/auth/createUser -d '{
