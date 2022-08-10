@@ -16,9 +16,10 @@ APIs provided:
 - All Roles
 
 ## Instruction
-The service is designed according to DDD. 
+The service is designed according to DDD model. 
 The structure is divided into three layers: API, domain and Dao. 
 The base package provides simulated bean management function, interface mapping function and simple HTTP server implementation.
+
 
 ## Run
 ```
