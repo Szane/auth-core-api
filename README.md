@@ -19,7 +19,11 @@ APIs provided:
 The service is designed according to DDD model. 
 The structure is divided into three layers: API, domain and Dao. 
 The base package provides simulated bean management function, interface mapping function and simple HTTP server implementation.
-
+The security performance of the service needs to be strengthened.Some of my ideas:
+   1. Verification code function can be added to prevent brute force cracking; 
+   2. Limit the number of password errors and reject the login request of the account within 10 minutes after reaching the limit; 
+   3. HTTPS service can be provided for secure transmission; 
+   4. Prohibit users from using weak passwords,etc.
 
 ## Run
 ```
