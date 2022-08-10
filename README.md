@@ -27,13 +27,13 @@ The security performance of the service needs to be strengthened.Some of my idea
 ```
 mvn clean package -U
 ```
-```aidl
+```
  java -jar .\target\auth-core-api-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 Test it by sending Http request.
 
-```aidl
+```
 curl -XPOST http://localhost:8099/api/auth/createUser -d '{
     "name": "user1"
 }'
