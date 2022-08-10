@@ -13,14 +13,14 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import java.util.Base64;
 
 public class AESUtils {
 
 
     private static final String encodeRules = "hsbc";
+    static Base64.Encoder encoder = Base64.getEncoder();
+    static Base64.Decoder decoder = Base64.getDecoder();
 
     /**
      * 加密
@@ -38,7 +38,8 @@ public class AESUtils {
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] byte_encode = content.getBytes("utf-8");
             byte[] byte_AES = cipher.doFinal(byte_encode);
-            String AES_encode = new String(new BASE64Encoder().encode(byte_AES));
+            String AES_encode = new String(encoder.encode(byte_AES));
+            System.out.println("AED_encode :" + AES_encode);
             return AES_encode;
         } catch (NoSuchAlgorithmException
                 | NoSuchPaddingException
@@ -77,7 +78,7 @@ public class AESUtils {
             SecretKey key = new SecretKeySpec(raw, "AES");
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE, key);
-            byte[] byte_content = new BASE64Decoder().decodeBuffer(content);
+            byte[] byte_content = decoder.decode(content);
             /*
              * 解密
              */

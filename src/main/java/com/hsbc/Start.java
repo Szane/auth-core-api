@@ -1,12 +1,17 @@
 package com.hsbc;
 
+import com.hsbc.base.Bean;
+import com.hsbc.dao.TokenDao;
 import com.hsbc.dao.UserDao;
 import com.hsbc.dao.impl.UserDaoImpl;
 import com.hsbc.base.DefaultHttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
+import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
